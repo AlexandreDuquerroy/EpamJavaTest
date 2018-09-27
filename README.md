@@ -1,0 +1,2 @@
+# EpamJavaTest
+Magic number
