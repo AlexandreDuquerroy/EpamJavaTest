@@ -12,7 +12,7 @@ import java.util.Scanner;
 /* Duquerroy Alexandre 
 	Epam Java Test Program
 	MagiczneNumerki.md
-	Update : 1:33 PM
+	Update : 1:43 PM
 */
 
 public class run {
@@ -47,7 +47,9 @@ public class run {
 	public static void main(String[] args){
 		
 		String base_format="";
+		String end_format="";
 		String src= "";
+		String analysis="";
 		int dotindex = 0;
 		String firstfileline="";
 		//Creating scanner to get the path
@@ -71,12 +73,21 @@ public class run {
 				BufferedReader buff=new BufferedReader(lecture);		
 				firstfileline=buff.readLine();
 				// Return the result of thecheckMagicNumber method
-				System.out.println(checkMagicNumber(firstfileline).toString());
+				analysis = checkMagicNumber(firstfileline).toString();
 				buff.close(); 		
 			} catch (IOException e) {
 				System.out.println("This file cannot be found at specified path");
 				e.printStackTrace();
 			}
+		}
+		System.out.println(analysis);
+		dotindex = analysis.indexOf(".");
+		end_format = analysis.substring(dotindex, analysis.length());
+		// Check if the extension is finally true
+		if(base_format.contentEquals(end_format)){
+			System.out.println("Finally the extension is True.");
+		}else{
+			System.out.println("Finally the extension is False.");
 		}
 	}
 }
