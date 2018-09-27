@@ -6,12 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Scanner;
 /* Duquerroy Alexandre 
 	Epam Java Test Program
 	MagiczneNumerki.md
-	Update : 12:25 PM
+	Update : 12:35 PM
 */
 
 public class run {
@@ -20,12 +21,15 @@ public class run {
 
 	public static void main(String[] args) throws IOException {
 		
+		String base_format="";
 		String src= "";
+		int dotindex = 0;
 		Scanner in = new Scanner(System.in);
 		System.out.println("File Checking Program;");
 		System.out.println("Provide the absolute path to the file:");
 		src = in.nextLine();
-		
+		dotindex= src.indexOf(".");
+		base_format =  src.substring(dotindex, src.length());
 		try {
 			InputStream input = new FileInputStream(new File(src));
 			InputStreamReader lecture=new InputStreamReader(input);
@@ -39,5 +43,6 @@ public class run {
 			e.printStackTrace();
 		}
 		// Check if the extension is true
+		System.out.println("The file is a " + base_format);
 	}
 }
