@@ -18,6 +18,26 @@ import java.util.Scanner;
 public class run {
 	
 	File f = new File("");
+	static ArrayList fileformats = new ArrayList<String>()  {{
+		 add(".png");
+		 add(".png");
+		 add(".png");
+		}};
+		
+	static ArrayList magicnumber = new ArrayList<String>()  {{
+		 add("ÿØÿÛ");
+		 add("ÿØÿà");
+		 add("ÿØÿá");
+		}};
+	public static String checkFormat(String buff){
+		String result = "";
+		for (int cpt0 = 0; cpt0<fileformats.size();cpt0++)
+			if(buff.contains(fileformats.get(cpt0).toString())){
+			result = ("The file is a " + magicnumber.get(cpt0).toString());
+			}
+			else{System.out.println("FAIL");}
+		return result;
+	}
 
 	public static void main(String[] args) throws IOException {
 		
@@ -30,6 +50,7 @@ public class run {
 		src = in.nextLine();
 		dotindex= src.indexOf(".");
 		base_format =  src.substring(dotindex, src.length());
+		System.out.println("The file is a " + base_format);
 		try {
 			InputStream input = new FileInputStream(new File(src));
 			InputStreamReader lecture=new InputStreamReader(input);
@@ -38,11 +59,11 @@ public class run {
 			
 			firstfileline=buff.readLine();
 			System.out.println(firstfileline);
+			// Check if the extension is true
+			checkFormat(firstfileline);
 			buff.close(); 		
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		// Check if the extension is true
-		System.out.println("The file is a " + base_format);
 	}
 }
